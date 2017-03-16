@@ -80,7 +80,7 @@ Beware that if you want to retrieve all identified genomes (by using the `--all`
 
 If you find this software useful in your research, please cite the following:
 
-- Alvarenga DO (2017) recogniZing gEnome seqUences in metagenomic aSSemblies (ZEUSS). Available from <https://github.com/danillo-alvarenga/zeuss>.
+- Alvarenga DO & Varani AM (2017) recogniZing gEnome seqUences in metagenomic aSSemblies (ZEUSS). Available from <https://github.com/danillo-alvarenga/zeuss>.
 
 - Wood DE, Salzberg SL (2014) Kraken: ultrafast metagenomic sequence classification using exact alignments. Genome Biol 15:R46. DOI: <https://doi.org/10.1186/gb-2014-15-3-r46>.
 
