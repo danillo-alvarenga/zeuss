@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# ZEUSS: recogniZing gEnomic seqUences in metagenomic aSSemblies
+# ZEUSS: recogniZing gEnome seqUences in metagenomic aSSemblies
 #
 # Version 1.0.0 - Mar 16, 2017
 #
