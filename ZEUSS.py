@@ -2,7 +2,7 @@
 #
 # ZEUSS: recogniZing gEnome seqUences in metagenomic aSSemblies
 #
-# Version 1.0.0 - Mar 16, 2017
+# Version 1.0.1 - May 9, 2017
 #
 # Copyright © 2017 Danillo Oliveira Alvarenga
 #
@@ -18,7 +18,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with ZEUSS. If not, see <http://www.gnu.org/licenses/agpl-3.0.html>.
-
+#
 import os
 import sys
 import csv
@@ -26,16 +26,15 @@ import argparse
 from csv import reader
 from time import strftime
 
-csv.field_size_limit(sys.maxsize)
-
 # Get arguments from the command line.
-parser = argparse.ArgumentParser(description="Kraken-based genomes retriever",
+parser = argparse.ArgumentParser(description=
+                                 "Kraken-based genomes retriever",
                                  formatter_class=lambda prog: 
                                  argparse.HelpFormatter(prog,
                                  max_help_position=100, width=100))
 
 parser.add_argument("-v", "--version", action="version",
-                    version="%(prog)s 1.0.0", help="show version and exit")
+                    version="%(prog)s 1.0.1", help="show version and exit")
 
 parser.add_argument("-f", "--file", metavar="Sequences.fasta",
                     required=True,
@@ -60,13 +59,17 @@ parser.add_argument("-m", "--minimum", metavar="Mb", type=float,
 parser.add_argument("-x", "--maximum", metavar="Mb", type=float,
                     help="maximum genome size for retrieval")
 parser.add_argument("-s", "--sequences", metavar="#", type=int,
-                    help="maximum number of sequences for a retrieved genome")
+                    help="maximum sequence number for a retrieved genome")
 parser.set_defaults(minimum=0, maximum=0, sequences=1000)
 
 args = parser.parse_args()
 
 # Get filename and extension from the file argument.
 filename, extension = os.path.splitext(os.path.basename(args.file))
+
+# Allow maximum size for csv files.
+csv.field_size_limit(sys.maxsize)
+
 
 # Retrieve IDs from a hierarchical level according to the taxon input.
 def get_IDs(taxon):
@@ -232,6 +235,8 @@ def retrieve_all(minimum, maximum, sequences):
     if no_genomes:
         print (strftime("%c") + "\tDone. No genomes were found.\n")
 
+    return
+
 # Run functions according to corresponding arguments.
 def main():
 
@@ -265,7 +270,7 @@ def main():
             retrieve_all(args.minimum, args.maximum, args.sequences)
 
     except KeyboardInterrupt:
-        print(strftime("%c") + "\tProgram cancelled.\n")
+        print("\n" + strftime("%c") + "\tProgram cancelled.\n")
     except:
         print(strftime("%c") + "\tError. Please verify input files.\n")
 
