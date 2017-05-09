@@ -6,7 +6,7 @@ recogniZing gEnome seqUences in metagenomic aSSemblies (ZEUSS) is a program that
 
 ## RELEASE
 
-Version 1.0.0 - Mar 16, 2017.
+Version 1.0.1 - May 9, 2017.
 
 Available from <https://github.com/danillo-alvarenga/zeuss>.
 
@@ -14,7 +14,7 @@ Available from <https://github.com/danillo-alvarenga/zeuss>.
 
 ## REQUIREMENTS
 
-ZEUSS runs on Python 3.4+ and has been tested on Ubuntu 14.04 and 16.04. It should work on any modern GNU/Linux distro. No installation for this program is required. However, since it works on Kraken outputs, it is necessary to have access to a proper installation of the Kraken software and a suitable database to obtain the necessary files.
+ZEUSS runs on Python 3.4+ using standard library modules and has been tested on Ubuntu 14.04 and 16.04. It should work on any modern GNU/Linux distro. No installation for this program is required. However, since it works on Kraken outputs, it is necessary to have access to a proper installation of the Kraken software and a suitable database to obtain the necessary files.
 
 ZEUSS has been developed with Kraken version v0.10.5-beta and its minikraken database in mind. Please refer to the Kraken documentation for its installation instructions.
 
@@ -41,7 +41,7 @@ optional arguments:
 `-a`, `--all` | retrieve all identified genomes  
 `-m Mb`, `--minimum Mb` | minimum genome size for retrieval  
 `-x Mb`, `--maximum Mb` | maximum genome size for retrieval  
-`-s #`, `--sequences #` | maximum number of sequences for a retrieved genome  
+`-s #`, `--sequences #` | maximum sequence number for a retrieved genome  
 
 In order to run ZEUSS, point it to the assembled metagenome fasta file, the Kraken taxonomic assignment output, and the Kraken database report file. Then, choose between retrieving the genome of a specific taxon from among the metagenome, removing the sequences of a specific taxon from the metagenome, or recovering genomes from all identified taxa. If you choose the latter, you may optionally provide values for minimum and/or maximum retrieved genome size in Mb and a maximum number of contigs/scaffolds allowed for each retrieved genome. By default, ZEUSS retrieves genomes broken into 1,000 contigs or less.
 
@@ -80,7 +80,7 @@ Beware that if you want to retrieve all identified genomes (by using the `--all`
 
 If you find this software useful in your research, please cite the following:
 
-- Alvarenga DO & Varani AM (2017) recogniZing gEnome seqUences in metagenomic aSSemblies (ZEUSS). Available from <https://github.com/danillo-alvarenga/zeuss>.
+- Alvarenga DO, Fiore MF, Varani AM (2017) A metagenomic approach to cyanobacterial genomics. Front Microbiol 8:809. DOI: <https://doi.org/10.3389/fmicb.2017.00809>
 
 - Wood DE, Salzberg SL (2014) Kraken: ultrafast metagenomic sequence classification using exact alignments. Genome Biol 15:R46. DOI: <https://doi.org/10.1186/gb-2014-15-3-r46>.
 
