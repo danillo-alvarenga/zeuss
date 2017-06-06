@@ -2,7 +2,7 @@
 #
 # ZEUSS: recogniZing gEnome seqUences in metagenomic aSSemblies
 #
-# Version 1.0.1 - May 9, 2017
+# Version 1.0.2 - June 6, 2017
 #
 # Copyright © 2017 Danillo Oliveira Alvarenga
 #
@@ -34,7 +34,7 @@ parser = argparse.ArgumentParser(description=
                                  max_help_position=100, width=100))
 
 parser.add_argument("-v", "--version", action="version",
-                    version="%(prog)s 1.0.1", help="show version and exit")
+                    version="%(prog)s 1.0.2", help="show version and exit")
 
 parser.add_argument("-f", "--file", metavar="Sequences.fasta",
                     required=True,
@@ -69,7 +69,6 @@ filename, extension = os.path.splitext(os.path.basename(args.file))
 
 # Allow maximum size for csv files.
 csv.field_size_limit(sys.maxsize)
-
 
 # Retrieve IDs from a hierarchical level according to the taxon input.
 def get_IDs(taxon):
@@ -114,7 +113,9 @@ def get_headers(taxon, mode):
 
             line_items = list(line)
 
-            if mode is "retrieve" and line_items[2] in header_IDs:
+            if mode is "retrieve" and taxon == "root" and line_items[0] != 'U':
+                taxon_headers.append('>' + line_items[1] + "\n")
+            elif mode is "retrieve" and line_items[2] in header_IDs:
                 taxon_headers.append('>' + line_items[1] + "\n")
             elif mode is "ignore" and line_items[2] not in header_IDs:
                 taxon_headers.append('>' + line_items[1] + "\n")

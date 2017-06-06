@@ -6,7 +6,7 @@ recogniZing gEnome seqUences in metagenomic aSSemblies (ZEUSS) is a program that
 
 ## RELEASE
 
-Version 1.0.1 - May 9, 2017.
+Version 1.0.2 - June 6, 2017.
 
 Available from <https://github.com/danillo-alvarenga/zeuss>.
 
@@ -14,7 +14,13 @@ Available from <https://github.com/danillo-alvarenga/zeuss>.
 
 ## REQUIREMENTS
 
-ZEUSS runs on Python 3.4+ using standard library modules and has been tested on Ubuntu 14.04 and 16.04. It should work on any modern GNU/Linux distro. No installation for this program is required. However, since it works on Kraken outputs, it is necessary to have access to a proper installation of the Kraken software and a suitable database to obtain the necessary files.
+ZEUSS runs on Python 3.4+ using standard library modules and has been tested on Debian 9 and Ubuntu 16.04. It should work on any modern GNU/Linux distro. No installation for this program is required. However, since it works on Kraken outputs, it is necessary to have access to a proper installation of the Kraken software and a suitable database to obtain the necessary files.
+
+For convenience, after downloading and extracting the latest ZEUSS release from GitHub you can move the extracted directory to the desired destination and add it to your path:  
+`mv ZEUSS/ bioinformatics/`  
+`cd bioinformatics/ZEUSS/`  
+`echo 'export PATH=$PATH'$(pwd) >> ~/.bashrc`  
+`source ~/.bashrc`  
 
 ZEUSS has been developed with Kraken version v0.10.5-beta and its minikraken database in mind. Please refer to the Kraken documentation for its installation instructions.
 
@@ -43,11 +49,12 @@ optional arguments:
 `-x Mb`, `--maximum Mb` | maximum genome size for retrieval  
 `-s #`, `--sequences #` | maximum sequence number for a retrieved genome  
 
-In order to run ZEUSS, point it to the assembled metagenome fasta file, the Kraken taxonomic assignment output, and the Kraken database report file. Then, choose between retrieving the genome of a specific taxon from among the metagenome, removing the sequences of a specific taxon from the metagenome, or recovering genomes from all identified taxa. If you choose the latter, you may optionally provide values for minimum and/or maximum retrieved genome size in Mb and a maximum number of contigs/scaffolds allowed for each retrieved genome. By default, ZEUSS retrieves genomes broken into 1,000 contigs or less.
+In order to run ZEUSS, point it to the assembled metagenome fasta file, the Kraken taxonomic assignment output and the Kraken database report file. Then, choose between retrieving the genome of a specific taxon from among the metagenome, removing the sequences of a specific taxon from the metagenome, or recovering genomes from all identified taxa. If you choose the latter, you may optionally provide values for minimum and/or maximum retrieved genome size in Mb and a maximum number of contigs/scaffolds allowed for each retrieved genome. By default, ZEUSS retrieves genomes broken into 1,000 contigs or less.
 
 >**Note:** The indicated taxon name must be typed exactly as found in the database used by Kraken.
 
 **Examples**:
+- retrieve all sequences that have been identified in any taxon: `ZEUSS -f scaffolds.fasta -k scaffolds.kraken -r scaffolds.kraken.report -t root`
 - retrieve the genome of a single genus: `ZEUSS -f scaffolds.fasta -k scaffolds.kraken -r scaffolds.kraken.report -t Nostoc`
 - exclude a phylum from the metagenome: `ZEUSS -f scaffolds.fasta -k scaffolds.kraken -r scaffolds.kraken.report -i Cyanobacteria`
 - retrieve all genomes between 1 and 10 Mb that are broken into 100 sequences or less: `ZEUSS -f scaffolds.fasta -k scaffolds.kraken -r scaffolds.kraken.report -a -m 1 -x 10 -s 100`
@@ -78,7 +85,7 @@ Beware that if you want to retrieve all identified genomes (by using the `--all`
 
 ## CITATION
 
-If you find this software useful in your research, please cite the following:
+If you find this software useful in your research, please cite the following references:
 
 - Alvarenga DO, Fiore MF, Varani AM (2017) A metagenomic approach to cyanobacterial genomics. Front Microbiol 8:809. DOI: <https://doi.org/10.3389/fmicb.2017.00809>.
 
